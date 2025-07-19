@@ -1,0 +1,192 @@
+[
+  {
+    "ContainingType": "AMDT.API.Controllers.RoleTypeController",
+    "Method": "Create",
+    "RelativePath": "api/RoleType",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.RoleTypeCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.RoleTypeController",
+    "Method": "GetAll",
+    "RelativePath": "api/RoleType",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.RoleTypeController",
+    "Method": "UpdateByKey",
+    "RelativePath": "api/RoleType/by-keys",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.RoleTypeUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.RoleTypeController",
+    "Method": "DeleteByKey",
+    "RelativePath": "api/RoleType/by-keys",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.RoleTypeRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.StatusController",
+    "Method": "Create",
+    "RelativePath": "api/Status",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.StatusCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.StatusController",
+    "Method": "GetAll",
+    "RelativePath": "api/Status",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.StatusController",
+    "Method": "UpdateByKey",
+    "RelativePath": "api/Status/by-keys",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.StatusUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.StatusController",
+    "Method": "DeleteByKey",
+    "RelativePath": "api/Status/by-keys",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.StatusRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.UserDetailsController",
+    "Method": "Create",
+    "RelativePath": "api/UserDetails",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.UserDetailsCreateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.UserDetailsController",
+    "Method": "GetAll",
+    "RelativePath": "api/UserDetails",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.UserDetailsController",
+    "Method": "UpdateByKey",
+    "RelativePath": "api/UserDetails/by-keys",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.UserDetailsUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.UserDetailsController",
+    "Method": "DeleteByKey",
+    "RelativePath": "api/UserDetails/by-keys",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.UserDetailsRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "AMDT.API.Controllers.UserDetailsController",
+    "Method": "Login",
+    "RelativePath": "api/UserDetails/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "dto",
+        "Type": "AMDT.API.Models.DTOs.LoginRequestDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]
