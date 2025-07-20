@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using AMDT.API.Models.DTOs;
 using AMDT.API.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 
@@ -15,11 +16,13 @@ public partial class AppDbContext : DbContext
         : base(options)
     {
     }
+    public DbSet<RoleTypeDto> RoleTypeDtos { get; set; }
 
     public virtual DbSet<RoleType> RoleTypes { get; set; }
 
     public virtual DbSet<Status> Statuses { get; set; }
 
+    public DbSet<UserDetailsDto> UserDetailsDtos { get; set; }
     public virtual DbSet<UserDetail> UserDetails { get; set; }
 
 //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
@@ -28,6 +31,12 @@ public partial class AppDbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<RoleTypeDto>(entity =>
+        {
+            entity.HasNoKey();
+            entity.ToView(null);
+        });
+
         modelBuilder.Entity<RoleType>(entity =>
         {
             entity.HasKey(e => e.RoleId);
@@ -53,6 +62,12 @@ public partial class AppDbContext : DbContext
             entity.Property(e => e.CreatedAt).HasColumnType("datetime");
             entity.Property(e => e.ModifiedAt).HasColumnType("datetime");
             entity.Property(e => e.StatusName).HasMaxLength(50);
+        });
+
+        modelBuilder.Entity<UserDetailsDto>(entity =>
+        {
+            entity.HasNoKey();
+            entity.ToView(null);
         });
 
         modelBuilder.Entity<UserDetail>(entity =>

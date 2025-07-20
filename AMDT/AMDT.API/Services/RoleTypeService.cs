@@ -17,7 +17,7 @@ namespace AMDT.API.Services
         }
         public async Task<(bool IsSuccess, string? ErrorMessage, string? SuccessMessage)> CreateAsync(RoleTypeCreateDto dto)
             => await _repository.CreateAsync(dto);
-        public Task<(IEnumerable<RoleType> roleTypes, string? ErrorMessage, string? SuccessMessage)> GetAllRoleTypeAsync()
+        public Task<(IEnumerable<RoleTypeDto> roleTypes, string? ErrorMessage, string? SuccessMessage)> GetAllRoleTypeAsync()
             => _repository.GetAllAsync();
         public async Task<(bool IsSuccess, string? ErrorMessage, string? SuccessMessage)> UpdateAsyncByID(RoleTypeUpdateDto dto)
             => await _repository.UpdateByKeyAsync(dto);

@@ -1,5 +1,6 @@
 ﻿using AMDT.API.Interfaces;
 using AMDT.API.Repositories;
+using AMDT.API.Services;
 
 namespace AMDT.API.Infrastructure.DependencyInjection
 {
@@ -16,9 +17,9 @@ namespace AMDT.API.Infrastructure.DependencyInjection
 
         public static IServiceCollection AddServices(this IServiceCollection services)
         {
-            services.AddScoped<IStatusRepository, StatusRepository>();
-            services.AddScoped<IRoleTypeRepository, RoleTypeRepository>();
-            services.AddScoped<IUserDetailsRepository, UserDetailsRepository>();
+            services.AddScoped<IStatusService, StatusService>();
+            services.AddScoped<IRoleTypeService, RoleTypeService>();
+            services.AddScoped<IUserDetailsService, UserDetailsService>();
 
             return services;
         }

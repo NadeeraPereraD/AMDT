@@ -60,14 +60,14 @@ namespace AMDT.API.Repositories
                 throw;
             }
         }
-        public async Task<(IEnumerable<UserDetail> userDetails, string? ErrorMessage, string? SuccessMessage)> GetAllAsync()
+        public async Task<(IEnumerable<UserDetailsDto> userDetails, string? ErrorMessage, string? SuccessMessage)> GetAllAsync()
         {
             try
             {
                 var errorParam = new SqlParameter("@ErrorMessage", SqlDbType.NVarChar, 500) { Direction = ParameterDirection.Output };
                 var successParam = new SqlParameter("@SuccessMessage", SqlDbType.NVarChar, 500) { Direction = ParameterDirection.Output };
 
-                var users = await _context.UserDetails
+                var users = await _context.Set<UserDetailsDto>()
                     .FromSqlRaw("EXEC dbo.usp_UserDetails_GetAll @ErrorMessage OUTPUT, @SuccessMessage OUTPUT",
                                  errorParam, successParam)
                     .ToListAsync();
@@ -91,12 +91,12 @@ namespace AMDT.API.Repositories
                     await conn.OpenAsync();
 
                 await using var cmd = conn.CreateCommand();
-                cmd.CommandText = "usp_UserDetails_Update";
+                cmd.CommandText = "usp_UserDetails_UpdateByID";
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@UserID", dto.UserID));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@FirstName", dto.FirstName));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@LastName", dto.LastName));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@Email", dto.Email));
-                cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@Password", dto.Password));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@DateOfBirth", dto.DateOfBirth));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@RoleName", dto.RoleName));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@StatusName", dto.StatusName));
@@ -133,7 +133,7 @@ namespace AMDT.API.Repositories
                     await conn.OpenAsync();
 
                 await using var cmd = conn.CreateCommand();
-                cmd.CommandText = "usp_UserDetails_Update";
+                cmd.CommandText = "usp_UserDetails_DeleteByID";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@UserID", UserID));
 

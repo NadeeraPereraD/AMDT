@@ -54,14 +54,14 @@ namespace AMDT.API.Repositories
                 throw;
             }
         }
-        public async Task<(IEnumerable<RoleType> roleTypes, string? ErrorMessage, string? SuccessMessage)> GetAllAsync()
+        public async Task<(IEnumerable<RoleTypeDto> roleTypes, string? ErrorMessage, string? SuccessMessage)> GetAllAsync()
         {
             try
             {
                 var errorParam = new SqlParameter("@ErrorMessage", SqlDbType.NVarChar, 500) { Direction = ParameterDirection.Output };
                 var successParam = new SqlParameter("@SuccessMessage", SqlDbType.NVarChar, 500) { Direction = ParameterDirection.Output };
 
-                var roleType = await _context.RoleTypes
+                var roleTypes = await _context.Set<RoleTypeDto>()
                     .FromSqlRaw("EXEC dbo.usp_RoleType_GetAll @ErrorMessage OUTPUT, @SuccessMessage OUTPUT",
                                  errorParam, successParam)
                     .ToListAsync();
@@ -69,7 +69,7 @@ namespace AMDT.API.Repositories
                 var errorMsg = errorParam.Value as string;
                 var successMsg = successParam.Value as string;
 
-                return (roleType, errorMsg, successMsg);
+                return (roleTypes, errorMsg, successMsg);
             }
             catch (Exception)
             {
@@ -85,8 +85,9 @@ namespace AMDT.API.Repositories
                     await conn.OpenAsync();
 
                 await using var cmd = conn.CreateCommand();
-                cmd.CommandText = "usp_RoleType_Update";
+                cmd.CommandText = "usp_RoleType_UpdateByID";
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@RoleID", dto.RoleID));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@RoleName", dto.RoleName));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@StatusName", dto.StatusName));
 
@@ -122,7 +123,7 @@ namespace AMDT.API.Repositories
                     await conn.OpenAsync();
 
                 await using var cmd = conn.CreateCommand();
-                cmd.CommandText = "usp_RoleType_Update";
+                cmd.CommandText = "usp_RoleType_DeleteByID";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@RoleID", RoleID));
 

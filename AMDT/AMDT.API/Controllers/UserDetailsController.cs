@@ -5,8 +5,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AMDT.API.Controllers
-{
-    [Authorize]
+{    
     [Route("api/[controller]")]
     [ApiController]
     public class UserDetailsController : ControllerBase
@@ -18,6 +17,7 @@ namespace AMDT.API.Controllers
             _userDetailsService = userDetailsService;
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Create([FromBody] UserDetailsCreateDto dto)
         {
@@ -49,6 +49,7 @@ namespace AMDT.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet]
         public async Task<IActionResult> GetAll()
         {
@@ -84,6 +85,7 @@ namespace AMDT.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpPut("by-keys")]
         public async Task<IActionResult> UpdateByKey([FromBody] UserDetailsUpdateDto dto)
         {
@@ -116,6 +118,7 @@ namespace AMDT.API.Controllers
             }
         }
 
+        [Authorize]
         [HttpDelete("by-keys")]
         public async Task<IActionResult> DeleteByKey([FromBody] UserDetailsRequestDto dto)
         {

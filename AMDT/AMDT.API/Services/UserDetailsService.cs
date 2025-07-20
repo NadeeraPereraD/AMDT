@@ -37,7 +37,7 @@ namespace AMDT.API.Services
 
             return await _repository.CreateAsync(dto);
         }
-        public Task<(IEnumerable<UserDetail> userDetails, string? ErrorMessage, string? SuccessMessage)> GetAllUserDetailsAsync()
+        public Task<(IEnumerable<UserDetailsDto> userDetails, string? ErrorMessage, string? SuccessMessage)> GetAllUserDetailsAsync()
             => _repository.GetAllAsync();
         public async Task<(bool IsSuccess, string? ErrorMessage, string? SuccessMessage)> UpdateAsyncByID(UserDetailsUpdateDto dto)
             => await _repository.UpdateByKeyAsync(dto);
@@ -83,20 +83,25 @@ namespace AMDT.API.Services
                 RegexOptions.IgnoreCase);
         }
 
+        //private string HashPassword(string password)
+        //{
+        //    using var rng = RandomNumberGenerator.Create();
+        //    byte[] salt = new byte[16];
+        //    rng.GetBytes(salt);
+
+        //    var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100_000, HashAlgorithmName.SHA256);
+        //    byte[] hash = pbkdf2.GetBytes(32); 
+
+        //    var result = new byte[48]; 
+        //    Array.Copy(salt, 0, result, 0, 16);
+        //    Array.Copy(hash, 0, result, 16, 32);
+
+        //    return Convert.ToBase64String(result);
+        //}
+
         private string HashPassword(string password)
         {
-            using var rng = RandomNumberGenerator.Create();
-            byte[] salt = new byte[16];
-            rng.GetBytes(salt);
-
-            var pbkdf2 = new Rfc2898DeriveBytes(password, salt, 100_000, HashAlgorithmName.SHA256);
-            byte[] hash = pbkdf2.GetBytes(32); 
-
-            var result = new byte[48]; 
-            Array.Copy(salt, 0, result, 0, 16);
-            Array.Copy(hash, 0, result, 16, 32);
-
-            return Convert.ToBase64String(result);
+            return BCrypt.Net.BCrypt.HashPassword(password);
         }
 
         private bool IsValidPassword(string password)

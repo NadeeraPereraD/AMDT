@@ -84,8 +84,9 @@ namespace AMDT.API.Repositories
                     await conn.OpenAsync();
 
                 await using var cmd = conn.CreateCommand();
-                cmd.CommandText = "usp_Status_Update";
+                cmd.CommandText = "usp_Status_UpdateByID";
                 cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@StatusID", dto.StatusID));
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@StatusName", dto.StatusName));
 
                 var pError = new Microsoft.Data.SqlClient.SqlParameter("@ErrorMessage", SqlDbType.NVarChar, 500)
@@ -120,7 +121,7 @@ namespace AMDT.API.Repositories
                     await conn.OpenAsync();
 
                 await using var cmd = conn.CreateCommand();
-                cmd.CommandText = "usp_Status_Update";
+                cmd.CommandText = "usp_Status_DeleteByID";
                 cmd.CommandType = CommandType.StoredProcedure;
                 cmd.Parameters.Add(new Microsoft.Data.SqlClient.SqlParameter("@StatusID", StatusID));
 

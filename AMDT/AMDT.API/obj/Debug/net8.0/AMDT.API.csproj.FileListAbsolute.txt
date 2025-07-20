@@ -170,3 +170,4 @@ D:\GIT\AMDT\AMDT\AMDT.API\bin\Debug\net8.0\AutoMapper.dll
 D:\GIT\AMDT\AMDT\AMDT.API\obj\Debug\net8.0\AMDT.API.sourcelink.json
 D:\GIT\AMDT\AMDT\AMDT.API\bin\Debug\net8.0\BCrypt.Net-Next.dll
 D:\GIT\AMDT\AMDT\AMDT.API\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\GIT\AMDT\AMDT\AMDT.API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
